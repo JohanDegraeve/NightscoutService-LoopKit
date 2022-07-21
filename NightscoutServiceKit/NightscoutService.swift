@@ -263,6 +263,10 @@ extension NightscoutService: RemoteDataService {
     public var dosingDecisionDataLimit: Int? { return 50 }  // Each can be up to 20K bytes of serialized JSON, target ~1M or less
 
     public func uploadDosingDecisionData(_ stored: [StoredDosingDecision], completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        completion(.success(true))
+        return
+        
         guard hasConfiguration, let uploader = uploader else {
             completion(.success(true))
             return
